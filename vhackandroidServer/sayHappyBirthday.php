@@ -37,6 +37,7 @@ if (count($target) > 0){
 $sql = "INSERT INTO congrats (fromUSerId, toUserId, year) VALUES ('".$user[0]["userId"]."', '$targetId', YEAR(CURDATE()))";
 queryDb($link, $sql);
 
+echo "{}";
 // // Send a push notification
 // // Replace with real BROWSER API key from Google APIs
 // $apiKey = "6462992600";
