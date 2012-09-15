@@ -21,7 +21,8 @@ if (count($user) == 0){
 $entries = array("firstName", "lastName", "tagline", "birthday", "c2dmToken");
 
 foreach ($entries as $key) {
-	if (isset($_POST[$key])) {
+	$value = $_POST[$key];
+	if (isset($value) && strlen($value) > 0) {
 		$values .= ", $key='".mysql_escape_string($_POST[$key])."'";
 	}
 }
