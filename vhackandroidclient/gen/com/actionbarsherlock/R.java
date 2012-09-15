@@ -1151,21 +1151,29 @@ containing a value of this type.
         public static final int abs__title=0x7f040020;
         public static final int abs__titleDivider=0x7f040021;
         public static final int abs__up=0x7f040010;
+        public static final int avatar=0x7f040039;
         public static final int bottom=0x7f040003;
+        public static final int change_date=0x7f04003d;
+        public static final int date=0x7f04003c;
         public static final int dateSeparator=0x7f04002e;
+        public static final int device_name=0x7f04003e;
+        public static final int device_os=0x7f04003f;
         public static final int disableHome=0x7f04000e;
         public static final int firstName=0x7f04002f;
+        public static final int first_name=0x7f04003a;
         public static final int homeAsUp=0x7f04000b;
         public static final int imageView1=0x7f04002c;
         public static final int lastName=0x7f040030;
+        public static final int last_name=0x7f04003b;
         public static final int listMode=0x7f040007;
-        public static final int menu_profile=0x7f040039;
-        public static final int menu_settings=0x7f04003a;
+        public static final int menu_profile=0x7f040041;
+        public static final int menu_settings=0x7f040042;
         public static final int none=0x7f040000;
         public static final int normal=0x7f040006;
         public static final int osVersion=0x7f040035;
         public static final int pager=0x7f040038;
         public static final int phoneName=0x7f040034;
+        public static final int save=0x7f040040;
         public static final int sayHappyBirthday=0x7f040036;
         public static final int showCustom=0x7f04000d;
         public static final int showHome=0x7f04000a;
@@ -1252,17 +1260,24 @@ containing a value of this type.
         /**  Description of a share target (both in the list of such or the default share button) in a ShareActionProvider (share UI). [CHAR LIMIT=NONE] 
          */
         public static final int abs__shareactionprovider_share_with_application=0x7f0a0009;
+        public static final int action_save=0x7f0a0015;
         public static final int app_name=0x7f0a000a;
+        public static final int birth_date=0x7f0a0018;
+        public static final int first_name=0x7f0a0016;
         public static final int hello_world=0x7f0a000b;
+        public static final int last_name=0x7f0a0017;
         public static final int menu_delete=0x7f0a000e;
         public static final int menu_profile=0x7f0a000d;
         public static final int menu_settings=0x7f0a000c;
         public static final int sayHappyBirthday=0x7f0a0014;
         public static final int title_activity_main=0x7f0a000f;
         public static final int title_activity_profile=0x7f0a0010;
+        public static final int title_birth_date=0x7f0a0019;
+        public static final int title_device_info=0x7f0a001a;
         public static final int title_profile_my=0x7f0a0011;
         public static final int title_profile_received=0x7f0a0013;
         public static final int title_profile_sent=0x7f0a0012;
+        public static final int title_tag_line=0x7f0a001b;
     }
     public static final class style {
         public static final int AppTheme=0x7f09005c;

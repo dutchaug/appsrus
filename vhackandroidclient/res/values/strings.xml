@@ -13,5 +13,15 @@
     <string name="title_profile_sent">Sent</string>
     <string name="title_profile_received">Received</string>
     <string name="sayHappyBirthday">Send a Birthday Wish</string>
+    
+    <string name="action_save">Save</string>
+    
+    <string name="first_name">First name</string>
+    <string name="last_name">Last name</string>
+    <string name="birth_date">Birth date</string>
+   
+    <string name="title_birth_date">Birth date</string>
+    <string name="title_device_info">Device</string>
+    <string name="title_tag_line">Tagline</string>
 
 </resources>
