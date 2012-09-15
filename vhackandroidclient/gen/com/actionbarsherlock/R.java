@@ -866,10 +866,10 @@ containing a value of this type.
         public static final int abs__bright_foreground_inverse_holo_dark=0x7f050017;
         public static final int abs__bright_foreground_inverse_holo_light=0x7f050018;
         public static final int abs__holo_blue_light=0x7f050019;
-        public static final int abs__primary_text_disable_only_holo_dark=0x7f05001a;
-        public static final int abs__primary_text_disable_only_holo_light=0x7f05001b;
-        public static final int abs__primary_text_holo_dark=0x7f05001c;
-        public static final int abs__primary_text_holo_light=0x7f05001d;
+        public static final int abs__primary_text_disable_only_holo_dark=0x7f05001b;
+        public static final int abs__primary_text_disable_only_holo_light=0x7f05001c;
+        public static final int abs__primary_text_holo_dark=0x7f05001d;
+        public static final int abs__primary_text_holo_light=0x7f05001e;
         public static final int default_circle_indicator_fill_color=0x7f050008;
         public static final int default_circle_indicator_page_color=0x7f050009;
         public static final int default_circle_indicator_stroke_color=0x7f05000a;
@@ -879,6 +879,7 @@ containing a value of this type.
         public static final int default_title_indicator_selected_color=0x7f05000e;
         public static final int default_title_indicator_text_color=0x7f05000f;
         public static final int default_underline_indicator_selected_color=0x7f050010;
+        public static final int separator=0x7f05001a;
         public static final int vpi__background_holo_dark=0x7f050000;
         public static final int vpi__background_holo_light=0x7f050001;
         public static final int vpi__bright_foreground_disabled_holo_dark=0x7f050004;
@@ -887,8 +888,8 @@ containing a value of this type.
         public static final int vpi__bright_foreground_holo_light=0x7f050003;
         public static final int vpi__bright_foreground_inverse_holo_dark=0x7f050006;
         public static final int vpi__bright_foreground_inverse_holo_light=0x7f050007;
-        public static final int vpi__dark_theme=0x7f05001e;
-        public static final int vpi__light_theme=0x7f05001f;
+        public static final int vpi__dark_theme=0x7f05001f;
+        public static final int vpi__light_theme=0x7f050020;
     }
     public static final class dimen {
         /**  Default height of an action bar. 
@@ -1002,6 +1003,8 @@ containing a value of this type.
         public static final int default_title_indicator_text_size=0x7f08000a;
         public static final int default_title_indicator_title_padding=0x7f08000b;
         public static final int default_title_indicator_top_padding=0x7f08000c;
+        public static final int externalMargin=0x7f080019;
+        public static final int internalMargin=0x7f08001a;
     }
     public static final class drawable {
         public static final int abs__ab_bottom_solid_dark_holo=0x7f020000;
@@ -1139,22 +1142,33 @@ containing a value of this type.
         public static final int abs__title=0x7f04001e;
         public static final int abs__titleDivider=0x7f04001f;
         public static final int abs__up=0x7f04000e;
+        public static final int dateSeparator=0x7f04002c;
         public static final int disableHome=0x7f04000c;
+        public static final int firstName=0x7f04002d;
         public static final int homeAsUp=0x7f040009;
+        public static final int imageView1=0x7f04002a;
+        public static final int lastName=0x7f04002e;
         public static final int listMode=0x7f040005;
-        public static final int menu_profile=0x7f04002c;
-        public static final int menu_settings=0x7f04002d;
+        public static final int menu_profile=0x7f040037;
+        public static final int menu_settings=0x7f040038;
         public static final int none=0x7f040000;
         public static final int normal=0x7f040004;
-        public static final int pager=0x7f04002b;
+        public static final int osVersion=0x7f040033;
+        public static final int pager=0x7f040036;
+        public static final int phoneName=0x7f040032;
+        public static final int sayHappyBirthday=0x7f040034;
         public static final int showCustom=0x7f04000b;
         public static final int showHome=0x7f040008;
         public static final int showTitle=0x7f04000a;
         public static final int tabMode=0x7f040006;
-        public static final int titles=0x7f04002a;
+        public static final int tagline=0x7f04002f;
+        public static final int taglineSeparator=0x7f040030;
+        public static final int textView2=0x7f04002b;
+        public static final int titles=0x7f040035;
         public static final int triangle=0x7f040001;
         public static final int underline=0x7f040002;
         public static final int useLogo=0x7f040007;
+        public static final int usesPhone=0x7f040031;
         public static final int wrap_content=0x7f040003;
     }
     public static final class integer {
@@ -1230,6 +1244,7 @@ containing a value of this type.
         public static final int menu_delete=0x7f0a000e;
         public static final int menu_profile=0x7f0a000d;
         public static final int menu_settings=0x7f0a000c;
+        public static final int sayHappyBirthday=0x7f0a0014;
         public static final int title_activity_main=0x7f0a000f;
         public static final int title_activity_profile=0x7f0a0010;
         public static final int title_profile_my=0x7f0a0011;
