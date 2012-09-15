@@ -20,6 +20,8 @@ public class UserProfile {
 	
 	public static UserProfile parse(JSONObject json) throws JSONException {
 		UserProfile userProfile = new UserProfile();
+		userProfile.firstName = json.getString("firstName");
+		userProfile.lastName = json.getString("lastName");
 		
 		return userProfile;
 	}
