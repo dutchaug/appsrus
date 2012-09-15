@@ -17,4 +17,6 @@ public interface AbcApi {
 	public void sayHappyBirthday (int toUserId, ApiListener listener);
 	
 	public void updateUserProfile (String firstName, String lastName, String c2dm, String tagline, int day, int month, int year, ApiListener listener);
+
+	public String getAuthToken();
 }

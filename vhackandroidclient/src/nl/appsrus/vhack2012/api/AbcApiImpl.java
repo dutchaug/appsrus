@@ -3,8 +3,8 @@ package nl.appsrus.vhack2012.api;
 public class AbcApiImpl implements AbcApi {
 
 	public void getKey(String email, ApiListener listener) {
-		// TODO Auto-generated method stub
-
+		new ApiRequest(listener).execute("getKey.php",
+				"email", email);
 	}
 
 	public void getBirthdays(ApiListener listener) {
@@ -22,6 +22,11 @@ public class AbcApiImpl implements AbcApi {
 			ApiListener listener) {
 		// TODO Auto-generated method stub
 
+	}
+
+	public String getAuthToken() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
