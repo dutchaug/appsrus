@@ -13,6 +13,7 @@ import android.support.v4.view.ViewPager;
 import android.util.Log;
 
 import com.actionbarsherlock.app.SherlockFragmentActivity;
+import com.actionbarsherlock.view.MenuItem;
 import com.viewpagerindicator.TitlePageIndicator;
 
 public class ProfileActivity extends SherlockFragmentActivity {
@@ -56,6 +57,15 @@ public class ProfileActivity extends SherlockFragmentActivity {
 			});
         }
     }
+	
+	@Override
+	public boolean onMenuItemSelected(int featureId, MenuItem item) {
+		if (item.getItemId() == android.R.id.home) {
+			finish();
+		}
+		
+		return super.onMenuItemSelected(featureId, item);
+	}
 
     @Override
     public boolean onCreateOptionsMenu(com.actionbarsherlock.view.Menu menu) {

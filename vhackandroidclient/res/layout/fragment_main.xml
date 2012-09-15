@@ -1,0 +1,120 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="116dp"
+        android:layout_height="116dp"
+        android:layout_marginTop="@dimen/externalMargin"
+        android:layout_marginLeft="@dimen/externalMargin"
+        android:src="@drawable/ic_launcher" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:textSize="40dp"
+        android:text="SEP 12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/imageView1"
+        android:layout_toRightOf="@+id/imageView1"
+        android:layout_marginLeft="@dimen/internalMargin"/>
+    
+    <View android:id="@+id/dateSeparator"
+        android:layout_height="1dp"
+        android:layout_width="fill_parent"
+        android:layout_below="@+id/textView2"
+        android:layout_alignLeft="@+id/textView2"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/externalMargin"
+        android:background="@color/separator"
+        />
+    
+    <TextView
+        android:id="@+id/firstName"
+        android:textSize="22dp"
+        android:text="Raul"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/lastName"
+        android:layout_alignLeft="@+id/textView2" />
+    
+	<TextView
+        android:id="@+id/lastName"
+        android:textSize="22dp"
+        android:text="Portales"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/imageView1"
+        android:layout_alignLeft="@+id/textView2" />
+	
+	<TextView
+        android:id="@+id/tagline"
+        android:textSize="14dp"
+        android:layout_marginTop="@dimen/internalMargin"
+        android:text="this is my tagline, lorem ipsm and all that crap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView1"
+        android:layout_alignRight="@+id/dateSeparator"
+        android:layout_alignLeft="@+id/imageView1" />
+	
+	<View android:id="@+id/taglineSeparator"
+        android:layout_height="1dp"
+        android:layout_width="wrap_content"
+        android:layout_below="@+id/tagline"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/externalMargin"
+        android:layout_marginLeft="@dimen/externalMargin"
+        android:layout_marginTop="@dimen/internalMargin"
+        android:background="@color/separator"
+        />
+	<TextView
+        android:id="@+id/usesPhone"
+        android:textSize="12dp"
+        android:text="RAUL USES:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/externalMargin"
+        android:layout_marginLeft="@dimen/externalMargin"
+        android:layout_marginTop="@dimen/internalMargin"
+        android:layout_below="@+id/taglineSeparator" />
+	<TextView
+        android:id="@+id/phoneName"
+        android:textSize="18dp"
+        android:text="Samsung Galaxy Nexus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/externalMargin"
+        android:layout_marginLeft="@dimen/externalMargin"
+        android:layout_below="@+id/usesPhone" />
+	<TextView
+        android:id="@+id/osVersion"
+        android:textSize="16dp"
+        android:text="Android 4.1 (Jelly Bean)"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/externalMargin"
+        android:layout_marginLeft="@dimen/externalMargin"
+        android:layout_below="@+id/phoneName" />
+
+	<Button
+	    android:id="@+id/sayHappyBirthday"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentBottom="true"
+	    android:layout_centerHorizontal="true"
+	    android:layout_marginRight="@dimen/externalMargin"
+        android:layout_marginLeft="@dimen/externalMargin"
+        android:layout_marginBottom="@dimen/externalMargin"
+        android:text="@string/sayHappyBirthday" />
+
+</RelativeLayout>

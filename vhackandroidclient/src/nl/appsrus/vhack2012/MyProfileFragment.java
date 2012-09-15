@@ -12,6 +12,7 @@ public class MyProfileFragment extends SherlockFragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		return super.onCreateView(inflater, container, savedInstanceState);
+		
+		return inflater.inflate(R.layout.fragment_profile_edit, null);
 	}
 }
