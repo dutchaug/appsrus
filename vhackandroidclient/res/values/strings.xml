@@ -13,5 +13,6 @@
     <string name="title_profile_sent">Sent</string>
     <string name="title_profile_received">Received</string>
     <string name="sayHappyBirthday">Send a Birthday Wish</string>
-
+    <string name="usesPhoneFormat">%s USES:</string>
+    
 </resources>

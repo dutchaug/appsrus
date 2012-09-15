@@ -54,12 +54,16 @@ public class MainActivity extends SherlockFragmentActivity implements ApiListene
 		try {
 			JSONObject user = response.getJSONArray("users").getJSONObject(0);
 			String firstName = user.getString("firstName");
-			String lastName = user.getString("lastName");
-			String tagline = user.getString("tagline");
+
+			String usesText = String.format(getString(R.string.usesPhoneFormat), firstName.toUpperCase());
 
 			setText(R.id.firstName, firstName);
-			setText(R.id.lastName, lastName);
-			setText(R.id.tagline, tagline);
+			setText(R.id.usesPhone, usesText);
+			setText(R.id.lastName, user.getString("lastName"));
+			setText(R.id.tagline, user.getString("tagline"));
+			setText(R.id.phoneName, user.getString("phoneModel"));
+			setText(R.id.osVersion, user.getString("osVersion"));
+
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

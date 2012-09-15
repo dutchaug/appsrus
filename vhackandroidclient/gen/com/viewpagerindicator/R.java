@@ -1250,6 +1250,7 @@ containing a value of this type.
         public static final int title_profile_my=0x7f0a0011;
         public static final int title_profile_received=0x7f0a0013;
         public static final int title_profile_sent=0x7f0a0012;
+        public static final int usesPhoneFormat=0x7f0a0015;
     }
     public static final class style {
         public static final int AppTheme=0x7f09005b;
