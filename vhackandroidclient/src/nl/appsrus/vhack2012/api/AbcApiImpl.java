@@ -1,5 +1,9 @@
 package nl.appsrus.vhack2012.api;
 
+import java.util.Calendar;
+
+import nl.appsrus.vhack2012.data.UserProfile;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -47,6 +51,30 @@ public class AbcApiImpl implements AbcApi {
 				"targetUserId", String.valueOf(toUserId));
 	}
 
+	@Override
+	public void updateUserProfile(UserProfile userProfile, ApiListener listener) {
+		String day = null;
+		String month = null;
+		String year = null;
+		
+		if (userProfile.birthDate != null) {
+			Calendar cal = Calendar.getInstance();
+			cal.setTime(userProfile.birthDate);
+			day = Integer.toString(cal.get(Calendar.DAY_OF_MONTH));
+			month = Integer.toString(cal.get(Calendar.MONTH));
+			year = Integer.toString(cal.get(Calendar.YEAR));
+		}
+		
+		new ApiRequest(listener).execute("updateProfile.php",
+				"firstName", userProfile.firstName,
+				"lastName", userProfile.lastName,
+				"c2dm", userProfile.gcmToken,
+				"tagline", userProfile.tagLine,
+				"day", day,
+				"month", month,
+				"year", year);
+	}
+	
 	public void updateUserProfile(String firstName, String lastName,
 			String c2dm, String tagline, int day, int month, int year,
 			ApiListener listener) {
@@ -54,7 +82,7 @@ public class AbcApiImpl implements AbcApi {
 
 	}
 	
-	protected void setAuthToken(String token) {
+	public void setAuthToken(String token) {
 		mAuthToken = token;
 		Editor e = PreferenceManager.getDefaultSharedPreferences(mContext).edit();
 		e.putString(AUTH_TOKEN, token);

@@ -1,5 +1,7 @@
 package nl.appsrus.vhack2012.api;
 
+import nl.appsrus.vhack2012.data.UserProfile;
+
 import org.json.JSONObject;
 
 public interface AbcApi {
@@ -16,7 +18,9 @@ public interface AbcApi {
 
 	public void sayHappyBirthday (int toUserId, ApiListener listener);
 	
-	public void updateUserProfile (String firstName, String lastName, String c2dm, String tagline, int day, int month, int year, ApiListener listener);
+	public void updateUserProfile (UserProfile userProfile, ApiListener listener);
 
 	public String getAuthToken();
+	
+	public void setAuthToken(String authToken);
 }
