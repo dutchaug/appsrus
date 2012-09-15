@@ -1,5 +1,7 @@
 package nl.appsrus.vhack2012.api;
 
+import android.content.Context;
+
 public class ApiFactory {
 
 	private static AbcApi sInstance;
@@ -8,10 +10,13 @@ public class ApiFactory {
 		// Hiding constructor of utility class
 	}
 	
-	public static AbcApi getInstance () {
+	public static void initialize (Context c) {
 		if (sInstance == null) {
-			sInstance = new AbcApiImpl();
+			sInstance = new AbcApiImpl(c);
 		}
+	}
+	
+	public static AbcApi getInstance () {
 		return sInstance;
 	}
 }

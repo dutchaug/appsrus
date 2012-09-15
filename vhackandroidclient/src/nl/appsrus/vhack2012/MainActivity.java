@@ -13,7 +13,7 @@ public class MainActivity extends SherlockFragmentActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ApiFactory.getInstance().getKey("test@example.com", null);
+//        ApiFactory.getInstance().getKey("test@example.com", null);
     }
 
     @Override

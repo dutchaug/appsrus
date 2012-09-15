@@ -18,7 +18,6 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpRequestBase;
-import org.apache.http.client.utils.URLEncodedUtils;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.params.BasicHttpParams;
@@ -71,12 +70,10 @@ public class ApiRequest extends AsyncTask<String, Void, ApiResponse> {
 		public String getErrorMessage() {
 			return mErrorMessage;
 		}
-
 	}
 
 	private static final int TIMEOUT_SOCKET = 5000;
 	private static final int TIMEOUT_CONNECTION = 3000;
-
 
 	private ApiListener mListener;
 
