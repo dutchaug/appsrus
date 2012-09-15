@@ -5,16 +5,20 @@
     <string name="menu_settings">Settings</string>
     <string name="menu_profile">Profile</string>
     <string name="menu_delete">Delete</string>
-    
     <string name="title_activity_main">Android Birthday Calendar</string>
     <string name="title_activity_profile">Profile</string>
-    
     <string name="title_profile_my">My profile</string>
     <string name="title_profile_sent">Sent</string>
     <string name="title_profile_received">Received</string>
     <string name="sayHappyBirthday">Send a Birthday Wish</string>
+    <string name="action_save">Save</string>
+    <string name="first_name">First name</string>
+    <string name="last_name">Last name</string>
+    <string name="birth_date">Birth date</string>
+    <string name="title_birth_date">Birth date</string>
+    <string name="title_device_info">Device</string>
+    <string name="title_tag_line">Tagline</string>
     <string name="alreadyCongratulated">Happy Birthday sent!</string>
-    
     <string name="usesPhoneFormat">%s USES:</string>
-    
+
 </resources>
