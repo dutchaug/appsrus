@@ -1,11 +1,12 @@
 package nl.appsrus.vhack2012;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import nl.appsrus.vhack2012.api.AbcApi;
 import nl.appsrus.vhack2012.api.ApiFactory;
 import nl.appsrus.vhack2012.data.UserProfile;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.accounts.Account;
 import android.accounts.AccountManager;
 import android.app.Application;
@@ -24,6 +25,7 @@ public class App extends Application {
 		
 		ApiFactory.initialize(getBaseContext());
 		final AbcApi api = ApiFactory.getInstance();
+
 		
 		if (api.getAuthToken() == null) {
 			Account[] accounts = AccountManager.get(this).getAccountsByType("com.google");

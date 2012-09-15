@@ -162,6 +162,9 @@ public class ApiRequest extends AsyncTask<String, Void, ApiResponse> {
 	@Override
 	protected void onPostExecute(ApiResponse result) {
 		super.onPostExecute(result);
+		if (mListener == null) {
+			return;
+		}
 		if (result instanceof ApiErrorResponse) {
 			ApiErrorResponse error = (ApiErrorResponse) result;
 			mListener.onError(error.getErrorCode(), error.getErrorMessage());

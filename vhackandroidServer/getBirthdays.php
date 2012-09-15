@@ -13,6 +13,6 @@ foreach ($users as $user) {
 if (strlen($result) > 0){
 	$result = substr($result, 1);
 }
-echo "{ [ $result ] }";
+echo "{ \"users\" : [ $result ] }";
 
 ?>
