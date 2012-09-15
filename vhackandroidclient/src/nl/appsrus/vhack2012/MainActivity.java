@@ -106,6 +106,9 @@ public class MainActivity extends SherlockFragmentActivity implements ApiListene
 
 		@Override
 		public void onClick(View v) {
+			Button button = (Button) getView().findViewById(R.id.sayHappyBirthday);
+			button.setEnabled(false);
+			
 			ApiFactory.getInstance().sayHappyBirthday(mUserId, this);
 		}
 

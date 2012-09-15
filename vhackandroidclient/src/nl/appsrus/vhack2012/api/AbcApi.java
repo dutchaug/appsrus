@@ -12,7 +12,7 @@ public interface AbcApi {
 		void onSuccess (JSONObject response);
 	}
 
-	public void getKey (String email, ApiListener listener);
+	public void getKey (ApiListener listener);
 	
 	public void getBirthdays (ApiListener listener);
 

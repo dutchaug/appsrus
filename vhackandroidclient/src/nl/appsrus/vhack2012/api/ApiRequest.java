@@ -117,6 +117,7 @@ public class ApiRequest extends AsyncTask<String, Void, ApiResponse> {
 			// Evaluate the response code
 			switch (statusCode) {
 			case HttpURLConnection.HTTP_UNAUTHORIZED:
+				ApiFactory.getInstance().getKey(null);
 			case HttpURLConnection.HTTP_BAD_REQUEST:
 			case HttpURLConnection.HTTP_NOT_FOUND:
 			case HttpURLConnection.HTTP_INTERNAL_ERROR: {
