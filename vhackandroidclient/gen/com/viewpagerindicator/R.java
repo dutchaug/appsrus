@@ -1097,16 +1097,17 @@ containing a value of this type.
         public static final int abs__tab_unselected_focused_holo=0x7f02005a;
         public static final int abs__tab_unselected_holo=0x7f02005b;
         public static final int abs__tab_unselected_pressed_holo=0x7f02005c;
-        public static final int ic_action_profile=0x7f02005d;
-        public static final int ic_action_search=0x7f02005e;
-        public static final int ic_launcher=0x7f02005f;
-        public static final int vpi__tab_indicator=0x7f020060;
-        public static final int vpi__tab_selected_focused_holo=0x7f020061;
-        public static final int vpi__tab_selected_holo=0x7f020062;
-        public static final int vpi__tab_selected_pressed_holo=0x7f020063;
-        public static final int vpi__tab_unselected_focused_holo=0x7f020064;
-        public static final int vpi__tab_unselected_holo=0x7f020065;
-        public static final int vpi__tab_unselected_pressed_holo=0x7f020066;
+        public static final int ic_action_delete=0x7f02005d;
+        public static final int ic_action_profile=0x7f02005e;
+        public static final int ic_action_search=0x7f02005f;
+        public static final int ic_launcher=0x7f020060;
+        public static final int vpi__tab_indicator=0x7f020061;
+        public static final int vpi__tab_selected_focused_holo=0x7f020062;
+        public static final int vpi__tab_selected_holo=0x7f020063;
+        public static final int vpi__tab_selected_pressed_holo=0x7f020064;
+        public static final int vpi__tab_unselected_focused_holo=0x7f020065;
+        public static final int vpi__tab_unselected_holo=0x7f020066;
+        public static final int vpi__tab_unselected_pressed_holo=0x7f020067;
     }
     public static final class id {
         public static final int abs__action_bar=0x7f040025;
@@ -1226,13 +1227,14 @@ containing a value of this type.
         public static final int abs__shareactionprovider_share_with_application=0x7f0a0009;
         public static final int app_name=0x7f0a000a;
         public static final int hello_world=0x7f0a000b;
+        public static final int menu_delete=0x7f0a000e;
         public static final int menu_profile=0x7f0a000d;
         public static final int menu_settings=0x7f0a000c;
-        public static final int title_activity_main=0x7f0a000e;
-        public static final int title_activity_profile=0x7f0a000f;
-        public static final int title_profile_my=0x7f0a0010;
-        public static final int title_profile_received=0x7f0a0012;
-        public static final int title_profile_sent=0x7f0a0011;
+        public static final int title_activity_main=0x7f0a000f;
+        public static final int title_activity_profile=0x7f0a0010;
+        public static final int title_profile_my=0x7f0a0011;
+        public static final int title_profile_received=0x7f0a0013;
+        public static final int title_profile_sent=0x7f0a0012;
     }
     public static final class style {
         public static final int AppTheme=0x7f09005b;
