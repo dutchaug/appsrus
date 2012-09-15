@@ -2,6 +2,8 @@ package nl.appsrus.vhack2012;
 
 import java.util.regex.Pattern;
 
+import nl.appsrus.vhack2012.api.ApiFactory;
+
 import android.accounts.Account;
 import android.accounts.AccountManager;
 import android.app.Application;
@@ -15,6 +17,7 @@ public class App extends Application {
 	@Override
 	public void onCreate() {
 		super.onCreate();
+		ApiFactory.initialize(getApplicationContext());
 		
 		Pattern emailPattern = Patterns.EMAIL_ADDRESS; // API level 8+
 		Account[] accounts = AccountManager.get(this).getAccounts();
