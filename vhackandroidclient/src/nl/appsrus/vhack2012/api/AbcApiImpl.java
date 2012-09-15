@@ -7,6 +7,8 @@ import nl.appsrus.vhack2012.data.UserProfile;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.accounts.Account;
+import android.accounts.AccountManager;
 import android.content.Context;
 import android.content.SharedPreferences.Editor;
 import android.preference.PreferenceManager;
@@ -24,22 +26,34 @@ public class AbcApiImpl implements AbcApi {
 		mAuthToken = PreferenceManager.getDefaultSharedPreferences(mContext).getString(AUTH_TOKEN, null);
 	}
 
-	public void getKey(String email, final ApiListener listener) {
-		new ApiRequest(new ApiListener() {
-			// Wrapper of the listener to process the Auth Key and store it
-			public void onSuccess(JSONObject response) {
-				try {
-					setAuthToken (response.getString("authKey"));
-				} catch (JSONException e) {
-					e.printStackTrace();
+	public void getKey(final ApiListener listener) {
+		// Get the Email
+		Account[] accounts = AccountManager.get(mContext).getAccountsByType("com.google");
+		if (accounts.length == 0) {
+			listener.onError(0, "You need a Google Account configured");
+		}
+		else {
+			final String email = accounts[0].name;
+			new ApiRequest(new ApiListener() {
+				// Wrapper of the listener to process the Auth Key and store it
+				public void onSuccess(JSONObject response) {
+					try {
+						setAuthToken (response.getString("authKey"));
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
+					if (listener != null) {
+						listener.onSuccess(response);
+					}
 				}
-				listener.onSuccess(response);
-			}
-			public void onError(int errorCode, String errorMessage) {
-				listener.onError(errorCode, errorMessage);
-			}
-		}).execute("getKey.php",
-				"email", email);
+				public void onError(int errorCode, String errorMessage) {
+					if (listener != null){
+						listener.onError(errorCode, errorMessage);
+					}
+				}
+			}).execute("getKey.php",
+					"email", email);
+		}
 	}
 
 	public void getBirthdays(ApiListener listener) {

@@ -31,6 +31,8 @@ function dumpUserInfo ($user)
 			'"firstName" : "'.$user["firstName"].'", '.
 			'"lastName" : "'.$user["lastName"].'", '.
 			'"tagline": "'.$user["tagline"].'", '.
+			'"phoneModel": "'.$user["phoneModel"].'", '.
+			'"osVersion": "'.$user["osVersion"].'", '.
 			'"birthday": "'.$user["birthday"].'", '.
 			'"gravatarUrl": "'.md5(strtolower(trim($user["email"]))).'" }';
 }

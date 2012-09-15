@@ -17,7 +17,7 @@ do {
 	$row = queryDb($link, $sql);
 }
 while (count($row) > 0);
-$sql = "INSERT INTO users (email, authToken) VALUES ('$email', '$token') ON DUPLICATE KEY UPDATE email='$email'";
+$sql = "INSERT INTO users (email, authToken) VALUES ('$email', '$token') ON DUPLICATE KEY UPDATE authToken='$token'";
 queryDb($link, $sql);
 
 echo "{ \"authKey\": \"$token\" }";

@@ -28,26 +28,23 @@ public class App extends Application {
 
 		
 		if (api.getAuthToken() == null) {
-			Account[] accounts = AccountManager.get(this).getAccountsByType("com.google");
-			if (accounts.length > 0) {
-				api.getKey(accounts[0].name, new AbcApi.ApiListener() {
-					
-					@Override
-					public void onSuccess(JSONObject response) {
-						try {
-							String authKey = response.getString("authKey");
-							api.setAuthToken(authKey);
-						} catch (JSONException e) {
-							Log.e(TAG, "Failed to parse JSON", e);
-						}
+			api.getKey(new AbcApi.ApiListener() {
+
+				@Override
+				public void onSuccess(JSONObject response) {
+					try {
+						String authKey = response.getString("authKey");
+						api.setAuthToken(authKey);
+					} catch (JSONException e) {
+						Log.e(TAG, "Failed to parse JSON", e);
 					}
-					
-					@Override
-					public void onError(int errorCode, String errorMessage) {
-						Log.e(TAG, "Failed to get a key: " + errorMessage);
-					}
-				});
-			}
+				}
+
+				@Override
+				public void onError(int errorCode, String errorMessage) {
+					Log.e(TAG, "Failed to get a key: " + errorMessage);
+				}
+			});
 		}
 	}
 	
