@@ -92,12 +92,11 @@ public class ApiRequest extends AsyncTask<String, Void, ApiResponse> {
 				values.add(new BasicNameValuePair("authKey", mUserToken));
 			}
 			// The extra parameters can be either get or post
-			List<NameValuePair> extraValues = new ArrayList<NameValuePair>();
 			// get the extra name value pairs
 			for (int i=1; i<params.length; i+=2){
-				extraValues.add(new BasicNameValuePair(params[i], params[i+1]));
+				values.add(new BasicNameValuePair(params[i], params[i+1]));
 			}
-			HttpRequestBase request = createRequest(extraValues, params[0]);
+			HttpRequestBase request = createRequest(values, params[0]);
 			// Execute HTTP Request
 			HttpParams httpParameters = new BasicHttpParams();
 			// Set the timeout in milliseconds until a connection is established.
