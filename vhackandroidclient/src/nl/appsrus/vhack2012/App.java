@@ -8,12 +8,10 @@ import nl.appsrus.vhack2012.ui.RemoteImageView;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.google.android.gcm.GCMRegistrar;
-
-import android.accounts.Account;
-import android.accounts.AccountManager;
 import android.app.Application;
 import android.util.Log;
+
+import com.google.android.gcm.GCMRegistrar;
 
 public class App extends Application {
 	
