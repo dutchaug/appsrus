@@ -1,6 +1,6 @@
 package nl.appsrus.vhack2012;
 
-import java.text.SimpleDateFormat;
+import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -10,6 +10,7 @@ import nl.appsrus.vhack2012.api.AbcApi;
 import nl.appsrus.vhack2012.api.ApiFactory;
 import nl.appsrus.vhack2012.api.AbcApi.ApiListener;
 import nl.appsrus.vhack2012.data.UserProfile;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -71,20 +72,18 @@ public class MyProfileFragment extends SherlockFragment {
 		dateButton.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				final DatePickerFragment datePicker = new DatePickerFragment(profile.year, profile.month, profile.day);
-				datePicker.show(getFragmentManager(), "datePicker");
-				datePicker.onDismiss(new DialogInterface() {
+				Log.d(TAG, "Clicking date change button!!!");
+				
+				final DatePickerFragment datePicker = new DatePickerFragment(profile.year, profile.month, profile.day, new DatePickerFragment.DatePickerListener() {
 					@Override
-					public void dismiss() {
-						// TODO Auto-generated method stub
-						
-					}
-					
-					@Override
-					public void cancel() {
-						
+					public void datePicked(int year, int month, int day) {
+						profile.year = year;
+						profile.month = month;
+						profile.day = day;
+						setProfile(profile);
 					}
 				});
+				datePicker.show(getFragmentManager(), "datePicker");
 			}
 		});
 		
@@ -101,11 +100,13 @@ public class MyProfileFragment extends SherlockFragment {
 		phoneModel.setText(profile.phoneName);
 		osVersion.setText(profile.osVersion);
 		
-		if (profile.day == 0 || profile.month == 0) {
+		if (profile.day == 0 || profile.month == 0 || profile.year == 0) {
 			birthDay.setText(R.string.birthday_not_set);
 		} else {
 			Calendar calendar = Calendar.getInstance();
-			calendar.set(profile.year, profile.month, profile.day);
+			calendar.set(profile.year, profile.month-1, profile.day);
+			
+			birthDay.setText(DateFormat.getDateInstance(DateFormat.MEDIUM).format(calendar.getTime()));
 		}
 	}
 	
