@@ -32,8 +32,9 @@ import android.util.Log;
 
 public class ApiRequest extends AsyncTask<String, Void, ApiResponse> {
 	
-	protected static final String API_BASE_URL = "http://192.178.10.62/~shalafi/abc/";
-	
+	protected static final String API_BASE_URL = "http://api.plattysoft.com/vhackandroid/";
+//	protected static final String API_BASE_URL = "http://192.178.10.62/~shalafi/abc/";
+
 	public class JSOnResponse implements ApiResponse {
 
 		private JSONObject mJsonObject;
@@ -117,6 +118,7 @@ public class ApiRequest extends AsyncTask<String, Void, ApiResponse> {
 			// Evaluate the response code
 			switch (statusCode) {
 			case HttpURLConnection.HTTP_UNAUTHORIZED:
+				ApiFactory.getInstance().setAuthToken(null);
 				ApiFactory.getInstance().getKey(null);
 			case HttpURLConnection.HTTP_BAD_REQUEST:
 			case HttpURLConnection.HTTP_NOT_FOUND:
