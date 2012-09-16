@@ -14,6 +14,11 @@ public class ProfileActivity extends SherlockFragmentActivity {
 	
 	private static final String TAG = ProfileActivity.class.getSimpleName();
 	
+	public static final String EXTRA_SELECTED_PAGE = "page";
+	public static final int PAGE_MY_PROFILE = 0;
+	public static final int PAGE_RECEIVED = 1;
+	public static final int PAGE_SENT = 2;
+	
 	private ViewPager mViewPager;
 	private ProfileFragmentAdapter mAdapter;
 	
@@ -29,6 +34,10 @@ public class ProfileActivity extends SherlockFragmentActivity {
         
         TitlePageIndicator titleIndicator = (TitlePageIndicator) findViewById(R.id.titles);
         titleIndicator.setViewPager(mViewPager);
+        
+        if (getIntent().hasExtra(EXTRA_SELECTED_PAGE)) {
+        	mViewPager.setCurrentItem(getIntent().getIntExtra(EXTRA_SELECTED_PAGE, 0));
+        }
     }
 	
 	@Override

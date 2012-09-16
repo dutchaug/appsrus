@@ -3,23 +3,24 @@ package nl.appsrus.vhack2012;
 import nl.appsrus.vhack2012.api.ApiFactory;
 import android.content.Context;
 import android.content.Intent;
-import android.widget.Toast;
 
 import com.google.android.gcm.GCMBaseIntentService;
 
 public class GCMIntentService extends GCMBaseIntentService {
 
+	private static final String TAG = GCMIntentService.class.getSimpleName();
+		
 	public GCMIntentService() {
 	}
-	
+
 	@Override
 	protected void onError(Context context, String regId) {
-		
+
 	}
 
 	@Override
 	protected void onMessage(Context context, Intent intent) {
-		Toast.makeText(this, "Push received!!", Toast.LENGTH_LONG).show();
+		((App) getApplication()).newWishReceived();
 	}
 
 	@Override
