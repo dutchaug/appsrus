@@ -16,6 +16,10 @@ public interface AbcApi {
 	
 	public void getBirthdays (ApiListener listener);
 
+	public void getSentCongrats (ApiListener listener);
+
+	public void getRcvdCongrats (ApiListener listener);
+
 	public void sayHappyBirthday (int toUserId, ApiListener listener);
 	
 	public void updateUserProfile (UserProfile userProfile, ApiListener listener);

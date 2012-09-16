@@ -1,25 +1,15 @@
 <?php 
 include 'common.php';
 
-// You need to be authenticated
-$authKey = $_POST["authKey"];
-
-if (!isset ($authKey)) {
-	dieWithError("Missing params", "400");
-}
 $link = connectDB();
 
-$sql = "SELECT * FROM users WHERE authToken = '".mysql_escape_string($authKey)."'";
-$user = queryDb($link, $sql);
-
-if (count($user) == 0){
-	dieWithError("Error authenticating", "401");
-}
+$user = getAuthenticatedUserOrDie($link, $_POST);
 
 // Build the sql update query with the entries that are there
 
-$entries = array("firstName", "lastName", "tagline", "birthday", "c2dmToken");
+$entries = array("firstName", "lastName", "tagline", "day", "month", "year", "phoneModel", "osVersion", "c2dmToken");
 
+$values="";
 foreach ($entries as $key) {
 	$value = $_POST[$key];
 	if (isset($value) && strlen($value) > 0) {
@@ -28,16 +18,14 @@ foreach ($entries as $key) {
 }
 if (strlen($values) > 0) {
 	$values = substr($values, 1);
-	$sql = "UPDATE users SET $values WHERE userId = '".$user[0]["userId"]."'";
+	$sql = "UPDATE users SET $values WHERE userId = '".$user["userId"]."'";
 	queryDb($link, $sql);
 	
-	$sql = "UPDATE users SET month=MONTH(birthday), day=DAY(birthday) WHERE userId = '".$user[0]["userId"]."'";
-	queryDb($link, $sql);
-	
-	$sql = "SELECT * FROM users WHERE authToken = '".mysql_escape_string($authKey)."'";
-	$user = queryDb($link, $sql);
+	$sql = "SELECT * FROM users WHERE userId = '".$user["userId"]."'";
+	$userSet = queryDb($link, $sql);
+	$user = $userSet[0];
 }
 
-echo dumpUserInfo ($user[0]);
+echo dumpUserInfo ($user);
 
 ?>

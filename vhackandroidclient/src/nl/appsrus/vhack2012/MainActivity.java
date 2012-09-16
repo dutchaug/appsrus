@@ -1,5 +1,8 @@
 package nl.appsrus.vhack2012;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -30,6 +33,8 @@ import com.viewpagerindicator.LinePageIndicator;
 public class MainActivity extends SherlockFragmentActivity implements ApiListener {
 	
 	private static final String TAG = MainActivity.class.getSimpleName();
+
+	private static final long MIN_SPLASH_TIME = 2000;
 	
 	private static JSONArray sUsers;
 
@@ -44,7 +49,7 @@ public class MainActivity extends SherlockFragmentActivity implements ApiListene
 			if (sUsers == null) {
 				return 1;
 			}
-			return sUsers.length() + 1;
+			return Math.min(sUsers.length() + 1, 5);
 		}
 
 		@Override
@@ -151,12 +156,15 @@ public class MainActivity extends SherlockFragmentActivity implements ApiListene
 
 	private MainActivityAdapter mAdapter;
 	private ViewPager mViewPager;
+
+	private long mInitialTime;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mAdapter = new MainActivityAdapter(getSupportFragmentManager());
+        
+		mAdapter = new MainActivityAdapter(getSupportFragmentManager());		
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mAdapter);
 
@@ -168,7 +176,7 @@ public class MainActivity extends SherlockFragmentActivity implements ApiListene
 	protected void onStart() {
 		super.onStart();
 		ApiFactory.getInstance().getBirthdays(this);
-		
+		mInitialTime = System.currentTimeMillis();
 		findViewById(R.id.layout_loading).setVisibility(View.VISIBLE);
 		findViewById(R.id.layout_main).setVisibility(View.GONE);
 	}
@@ -201,12 +209,34 @@ public class MainActivity extends SherlockFragmentActivity implements ApiListene
 			mAdapter.notifyDataSetChanged();
 			mViewPager.invalidate();
 			mViewPager.setCurrentItem(0);
-	        findViewById(R.id.layout_main).setVisibility(View.VISIBLE);
-	        findViewById(R.id.layout_loading).setVisibility(View.GONE);
+			// Now, check the time the splash has been displaying, if less than minimum, schedule a dismiss
+			long currentTime = System.currentTimeMillis();
+			if ((currentTime - mInitialTime) < MIN_SPLASH_TIME) {
+				Timer t = new Timer();
+				t.schedule(new TimerTask() {
+					@Override
+					public void run() {
+						runOnUiThread(new Runnable() {
+							@Override
+							public void run() {
+								dismissSplashScreen();
+							}
+						});
+					}
+				}, MIN_SPLASH_TIME - (currentTime - mInitialTime));
+			}
+			else {
+				dismissSplashScreen();
+			}
 
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	private void dismissSplashScreen() {
+		findViewById(R.id.layout_main).setVisibility(View.VISIBLE);
+		findViewById(R.id.layout_loading).setVisibility(View.GONE);
 	}
 }

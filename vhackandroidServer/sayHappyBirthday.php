@@ -1,20 +1,9 @@
 <?php 
 include 'common.php';
 
-// You need to be authenticated
-$authKey = $_POST["authKey"];
-
-if (!isset ($authKey)) {
-	dieWithError("Missing params");
-}
 $link = connectDB();
 
-$sql = "SELECT * FROM users WHERE authToken = '".mysql_escape_string($authKey)."'";
-$user = queryDb($link, $sql);
-
-if (count($user) == 0){
-	dieWithError("Error authenticating", "401");
-}
+$user = getAuthenticatedUserOrDie($link, $_POST);
 
 // targetUserId is required
 $targetId = $_POST["targetUserId"];
@@ -28,13 +17,13 @@ if (count($target) == 0){
 	dieWithError("Today is not the birthday of this person");
 }
 // Only once per year
-$sql = "SELECT * FROM congrats WHERE year = YEAR(CURDATE()) AND fromUserId = '".$user[0]["userId"]."' AND toUserId = '$targetId'";
+$sql = "SELECT * FROM congrats WHERE year = YEAR(CURDATE()) AND fromUserId = '".$user["userId"]."' AND toUserId = '$targetId'";
 $target = queryDb($link, $sql);
 if (count($target) > 0){
 	dieWithError("You already sent birthday wishes to this person this year!");
 }
 // Enter it
-$sql = "INSERT INTO congrats (fromUSerId, toUserId, year) VALUES ('".$user[0]["userId"]."', '$targetId', YEAR(CURDATE()))";
+$sql = "INSERT INTO congrats (fromUSerId, toUserId, year) VALUES ('".$user["userId"]."', '$targetId', YEAR(CURDATE()))";
 queryDb($link, $sql);
 
 echo "{}";

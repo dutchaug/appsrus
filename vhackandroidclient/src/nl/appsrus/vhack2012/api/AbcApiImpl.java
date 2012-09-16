@@ -106,4 +106,14 @@ public class AbcApiImpl implements AbcApi {
 		return mAuthToken;
 	}
 
+	@Override
+	public void getSentCongrats(ApiListener listener) {
+		new ApiRequest(listener).execute("getSentCongrats.php");		
+	}
+
+	@Override
+	public void getRcvdCongrats(ApiListener listener) {
+		new ApiRequest(listener).execute("getRcvdCongrats.php");
+	}
+
 }
