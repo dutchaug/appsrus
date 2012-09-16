@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item android:drawable="@drawable/app_icon_animate1" android:duration="200" />
+    <item android:drawable="@drawable/app_icon_animate2" android:duration="200" />
+    <item android:drawable="@drawable/app_icon_animate3" android:duration="200" />
+    <item android:drawable="@drawable/app_icon_animate4" android:duration="200" />
+</animation-list>

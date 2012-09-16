@@ -12,6 +12,7 @@ import nl.appsrus.vhack2012.api.AbcApi.ApiListener;
 import nl.appsrus.vhack2012.api.ApiFactory;
 import nl.appsrus.vhack2012.ui.RemoteImageView;
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -24,6 +25,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.webkit.WebView.FindListener;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -186,6 +188,10 @@ public class MainActivity extends SherlockFragmentActivity implements ApiListene
 		mInitialTime = System.currentTimeMillis();
 		findViewById(R.id.layout_loading).setVisibility(View.VISIBLE);
 		findViewById(R.id.layout_main).setVisibility(View.GONE);
+		ImageView iv = (ImageView) findViewById(R.id.loading_animation);
+		iv.setImageResource(R.drawable.loading_animated);
+		AnimationDrawable ad = (AnimationDrawable) iv.getDrawable();
+		ad.start();
 	}
 
 	@Override
