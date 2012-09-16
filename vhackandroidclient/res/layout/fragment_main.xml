@@ -12,7 +12,7 @@
         android:src="@drawable/ic_launcher" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/datetext"
         android:textSize="40dp"
         android:text="SEP 12"
         android:layout_width="wrap_content"
@@ -24,8 +24,8 @@
     <View android:id="@+id/dateSeparator"
         android:layout_height="1dp"
         android:layout_width="fill_parent"
-        android:layout_below="@+id/textView2"
-        android:layout_alignLeft="@+id/textView2"
+        android:layout_below="@+id/datetext"
+        android:layout_alignLeft="@+id/datetext"
         android:layout_alignParentRight="true"
         android:layout_marginRight="@dimen/externalMargin"
         android:background="@color/separator"
@@ -38,7 +38,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/lastName"
-        android:layout_alignLeft="@+id/textView2" />
+        android:layout_alignLeft="@+id/datetext" />
     
 	<TextView
         android:id="@+id/lastName"
@@ -47,7 +47,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/imageView1"
-        android:layout_alignLeft="@+id/textView2" />
+        android:layout_alignLeft="@+id/datetext" />
 	
 	<TextView
         android:id="@+id/tagline"

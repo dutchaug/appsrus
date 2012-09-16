@@ -1,6 +1,8 @@
 package nl.appsrus.vhack2012;
 
 import java.net.URI;
+import java.text.DateFormat;
+import java.util.Calendar;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -108,6 +110,11 @@ public class MainActivity extends SherlockFragmentActivity implements ApiListene
 				setText(R.id.phoneName, mUser.getString("phoneModel"));
 				setText(R.id.osVersion, mUser.getString("osVersion"));
 				
+				int day = mUser.getInt("day");
+				String monthString = getMonthString (mUser.getInt("month"));
+				
+				setText(R.id.datetext, monthString+" "+day);
+				
 				RemoteImageView avatar = (RemoteImageView) view.findViewById(R.id.imageView1);
 				avatar.loadURI(URI.create("http://www.gravatar.com/avatar/" + mUser.getString("gravatarUrl")));
 				
@@ -118,6 +125,37 @@ public class MainActivity extends SherlockFragmentActivity implements ApiListene
 			displayProperMessage();
 		}
 		
+		private String getMonthString(int month) {
+			switch (month) {
+			case 1:
+				return "JAN";
+			case 2:
+				return "FEB";
+			case 3:
+				return "MAR";
+			case 4:
+				return "APR";
+			case 5:
+				return "MAY";
+			case 6:
+				return "JUN";
+			case 7:
+				return "JUL";
+			case 8:
+				return "AUG";
+			case 9:
+				return "SEP";
+			case 10:
+				return "OCT";
+			case 11:
+				return "NOV";
+			case 12:
+				return "DEC";
+				
+			}
+			return "";
+		}
+
 		private void setText(int resId, String text) {
 			((TextView)getView().findViewById(resId)).setText(text);
 		}
