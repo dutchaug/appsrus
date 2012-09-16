@@ -9,7 +9,7 @@
         android:layout_height="match_parent"
         android:gravity="center" >
 
-        <nl.appsrus.vhack2012.ui.RemoteImageView
+        <ImageView
             android:id="@+id/loading_animation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -34,7 +34,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp" >
 
-                <ImageView
+                <nl.appsrus.vhack2012.ui.RemoteImageView
                     android:id="@+id/avatar"
                     android:layout_width="60dp"
                     android:layout_height="60dp"

@@ -15,7 +15,9 @@ import nl.appsrus.vhack2012.ui.RemoteImageView;
 
 import org.json.JSONObject;
 
+import android.app.LauncherActivity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -64,6 +66,17 @@ public class MyProfileFragment extends SherlockFragment {
 		
 		firstName = (EditText) view.findViewById(R.id.first_name);
 		lastName = (EditText) view.findViewById(R.id.last_name);
+		
+		avatar = (RemoteImageView) view.findViewById(R.id.avatar);
+		avatar.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent i = new Intent(Intent.ACTION_VIEW);
+				i.setData(Uri.parse("http://www.gravatar.com/"));
+				startActivity(i);
+			}
+		});
 		
 		birthDay = (TextView) view.findViewById(R.id.date);
 		
@@ -145,15 +158,15 @@ public class MyProfileFragment extends SherlockFragment {
 		
 		profileEditor.setVisibility(View.VISIBLE);
 		loadingScreen.setVisibility(View.GONE);
+		
+		URI uri = URI.create("http://www.gravatar.com/avatar/" + profile.gravatarUrl);
+		avatar.loadURI(uri);
 	}
 	
 	private void saveProfile() {
 		profile.firstName = firstName.getText().toString();
 		profile.lastName = lastName.getText().toString();
 		profile.tagLine= tagline.getText().toString();
-		
-		URI uri = URI.create("http://www.gravatar.com/avatar/" + profile.gravatarUrl);
-		avatar.loadURI(uri);
 		
 		final ProgressDialog progress = new ProgressDialog(getActivity());
 		progress.setMessage(getText(R.string.saving_profile));

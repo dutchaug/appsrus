@@ -1,5 +1,6 @@
 package nl.appsrus.vhack2012;
 
+import java.net.URI;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -9,6 +10,7 @@ import org.json.JSONObject;
 
 import nl.appsrus.vhack2012.api.AbcApi.ApiListener;
 import nl.appsrus.vhack2012.api.ApiFactory;
+import nl.appsrus.vhack2012.ui.RemoteImageView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -20,6 +22,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.webkit.WebView.FindListener;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -102,6 +105,10 @@ public class MainActivity extends SherlockFragmentActivity implements ApiListene
 				setText(R.id.tagline, mUser.getString("tagline"));
 				setText(R.id.phoneName, mUser.getString("phoneModel"));
 				setText(R.id.osVersion, mUser.getString("osVersion"));
+				
+				RemoteImageView avatar = (RemoteImageView) view.findViewById(R.id.imageView1);
+				avatar.loadURI(URI.create("http://www.gravatar.com/avatar/" + mUser.getString("gravatarUrl")));
+				
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
