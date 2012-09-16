@@ -1,15 +1,18 @@
 package nl.appsrus.vhack2012;
 
+import java.net.URI;
 import java.text.DateFormat;
 import java.util.Calendar;
 
 import nl.appsrus.vhack2012.api.AbcApi;
 import nl.appsrus.vhack2012.api.ApiFactory;
 import nl.appsrus.vhack2012.data.UserProfile;
+import nl.appsrus.vhack2012.ui.RemoteImageView;
 
 import org.json.JSONObject;
 
 import android.app.ProgressDialog;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -33,6 +36,8 @@ public class MyProfileFragment extends SherlockFragment {
 	
 	private EditText firstName;
 	private EditText lastName;
+	
+	private RemoteImageView avatar;
 	
 	private TextView birthDay;
 	
@@ -129,6 +134,9 @@ public class MyProfileFragment extends SherlockFragment {
 		profile.firstName = firstName.getText().toString();
 		profile.lastName = lastName.getText().toString();
 		profile.tagLine= tagline.getText().toString();
+		
+		URI uri = URI.create("http://www.gravatar.com/avatar/" + profile.gravatarUrl);
+		avatar.loadURI(uri);
 		
 		final ProgressDialog progress = new ProgressDialog(getActivity());
 		progress.setMessage(getText(R.string.saving_profile));

@@ -9,7 +9,7 @@
         android:layout_height="match_parent"
         android:gravity="center" >
 
-        <ImageView
+        <nl.appsrus.vhack2012.ui.RemoteImageView
             android:id="@+id/loading_animation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

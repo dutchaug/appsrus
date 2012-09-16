@@ -14,6 +14,8 @@ public class UserProfile {
 	public String lastName;
 	public String tagLine;
 	
+	public String gravatarUrl; 
+	
 	public int day;
 	public int month;
 	public int year;
@@ -27,6 +29,7 @@ public class UserProfile {
 		userProfile.firstName = json.getString("firstName");
 		userProfile.lastName = json.getString("lastName");
 		userProfile.tagLine = json.getString("tagline");
+		userProfile.gravatarUrl = json.getString("gravatarUrl");
 		userProfile.day = json.getInt("day");
 		userProfile.month = json.getInt("month");
 		userProfile.year = json.getInt("year");
