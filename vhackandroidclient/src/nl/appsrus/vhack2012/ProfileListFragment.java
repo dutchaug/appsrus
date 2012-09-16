@@ -26,7 +26,12 @@ public abstract class ProfileListFragment extends SherlockFragment implements Ap
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		return inflater.inflate(R.layout.fragment_list_with_loading, null);
+		
+		ViewGroup view = (ViewGroup) inflater.inflate(getLayout(), null);
+		ListView list = (ListView) view.findViewById(R.id.list);
+		list.setEmptyView(view.findViewById(R.id.empty_list));
+		
+		return view;
 	}
 
 	@Override
@@ -35,6 +40,8 @@ public abstract class ProfileListFragment extends SherlockFragment implements Ap
 		// Show the loading screen
 		view.findViewById(R.id.layout_loading).setVisibility(View.VISIBLE);
 		view.findViewById(R.id.list).setVisibility(View.GONE);
+		
+		
 		ImageView iv = (ImageView) view.findViewById(R.id.loading_animation);
 		iv.setImageResource(R.drawable.loading_animated);
 		AnimationDrawable ad = (AnimationDrawable) iv.getDrawable();
@@ -70,4 +77,6 @@ public abstract class ProfileListFragment extends SherlockFragment implements Ap
 			e.printStackTrace();
 		}
 	}
+	
+	protected abstract int getLayout();
 }
