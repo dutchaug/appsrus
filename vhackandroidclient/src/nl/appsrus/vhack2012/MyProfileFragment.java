@@ -1,11 +1,14 @@
 package nl.appsrus.vhack2012;
 
+import java.util.Date;
+
 import org.json.JSONObject;
 
 import nl.appsrus.vhack2012.api.AbcApi;
 import nl.appsrus.vhack2012.api.ApiFactory;
 import nl.appsrus.vhack2012.api.AbcApi.ApiListener;
 import nl.appsrus.vhack2012.data.UserProfile;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -26,6 +29,7 @@ public class MyProfileFragment extends SherlockFragment {
 	private EditText lastName;
 	
 	private Button saveButton;
+	private Button dateButton;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -40,6 +44,27 @@ public class MyProfileFragment extends SherlockFragment {
 			@Override
 			public void onClick(View v) {
 				saveProfile();
+			}
+		});
+		
+		dateButton = (Button) view.findViewById(R.id.change_date);
+		dateButton.setOnClickListener(new Button.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				final DatePickerFragment datePicker = new DatePickerFragment(profile.year, profile.month, profile.day);
+				datePicker.show(getFragmentManager(), "datePicker");
+				datePicker.onDismiss(new DialogInterface() {
+					@Override
+					public void dismiss() {
+						// TODO Auto-generated method stub
+						
+					}
+					
+					@Override
+					public void cancel() {
+						
+					}
+				});
 			}
 		});
 		
