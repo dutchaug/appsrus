@@ -1,7 +1,5 @@
 package nl.appsrus.vhack2012.api;
 
-import java.util.Calendar;
-
 import nl.appsrus.vhack2012.data.UserProfile;
 
 import org.json.JSONException;
@@ -11,6 +9,7 @@ import android.accounts.Account;
 import android.accounts.AccountManager;
 import android.content.Context;
 import android.content.SharedPreferences.Editor;
+import android.os.Build;
 import android.preference.PreferenceManager;
 
 public class AbcApiImpl implements AbcApi {
@@ -67,26 +66,17 @@ public class AbcApiImpl implements AbcApi {
 
 	@Override
 	public void updateUserProfile(UserProfile userProfile, ApiListener listener) {
-		String day = null;
-		String month = null;
-		String year = null;
-		
-		if (userProfile.birthDate != null) {
-			Calendar cal = Calendar.getInstance();
-			cal.setTime(userProfile.birthDate);
-			day = Integer.toString(cal.get(Calendar.DAY_OF_MONTH));
-			month = Integer.toString(cal.get(Calendar.MONTH));
-			year = Integer.toString(cal.get(Calendar.YEAR));
-		}
-		
 		new ApiRequest(listener).execute("updateProfile.php",
 				"firstName", userProfile.firstName,
 				"lastName", userProfile.lastName,
 				"c2dm", userProfile.gcmToken,
 				"tagline", userProfile.tagLine,
-				"day", day,
-				"month", month,
-				"year", year);
+				"day", Integer.toString(userProfile.day),
+				"month", Integer.toString(userProfile.month),
+				"year", Integer.toString(userProfile.year),
+				"deviceName", Build.MODEL,
+				"osVesion", "Android " + Build.VERSION.RELEASE
+				);
 	}
 	
 	public void updateUserProfile(String firstName, String lastName,

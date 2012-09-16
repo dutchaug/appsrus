@@ -1,5 +1,6 @@
 package nl.appsrus.vhack2012;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import nl.appsrus.vhack2012.api.AbcApi;
@@ -47,7 +48,13 @@ public class ProfileActivity extends SherlockFragmentActivity {
 				
 				@Override
 				public void onSuccess(JSONObject response) {
-					Log.d(TAG, "onSuccess: " + response.toString());
+					try {
+						UserProfile profile = UserProfile.parse(response);
+						myProfileFragment.setProfile(profile);
+						Log.e(TAG, "onSuccess: " + response.toString());
+					} catch (JSONException e) {
+						Log.e(TAG, "Could not parse profile", e);
+					}
 				}
 				
 				@Override

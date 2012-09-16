@@ -12,6 +12,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -23,9 +24,12 @@ import android.widget.Toast;
 import com.actionbarsherlock.app.SherlockFragment;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.MenuItem;
+import com.google.android.gcm.GCMRegistrar;
 import com.viewpagerindicator.LinePageIndicator;
 
 public class MainActivity extends SherlockFragmentActivity implements ApiListener {
+	
+	private static final String TAG = MainActivity.class.getSimpleName();
 	
 	private static JSONArray sUsers;
 
@@ -158,6 +162,15 @@ public class MainActivity extends SherlockFragmentActivity implements ApiListene
 
         LinePageIndicator titleIndicator = (LinePageIndicator) findViewById(R.id.titles);
         titleIndicator.setViewPager(mViewPager);
+        
+        GCMRegistrar.checkDevice(this);
+        GCMRegistrar.checkManifest(this);
+        final String regId = GCMRegistrar.getRegistrationId(this);
+        if (regId.equals("")) {
+          GCMRegistrar.register(this, "6462992600");
+        } else {
+          Log.v(TAG, "Already registered");
+        }
     }
 
 	@Override
