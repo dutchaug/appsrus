@@ -9,4 +9,9 @@ public class SentWishesProfileFragment extends ProfileListFragment {
 		ApiFactory.getInstance().getSentCongrats(this);
 	}
 	
+	@Override
+	protected int getLayout() {
+		return R.layout.sent_list;
+	}
+	
 }

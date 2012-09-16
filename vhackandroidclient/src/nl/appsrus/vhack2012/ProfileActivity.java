@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.widget.Toast;
 
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.MenuItem;
@@ -42,8 +43,13 @@ public class ProfileActivity extends SherlockFragmentActivity {
 	
 	@Override
 	public boolean onMenuItemSelected(int featureId, MenuItem item) {
-		if (item.getItemId() == android.R.id.home) {
+		switch (item.getItemId()) {
+		case android.R.id.home:
 			finish();
+			break;
+		case R.id.menu_delete:
+			Toast.makeText(this, R.string.not_implemented_yet, Toast.LENGTH_LONG).show();
+			break;
 		}
 		
 		return super.onMenuItemSelected(featureId, item);

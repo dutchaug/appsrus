@@ -11,4 +11,9 @@ public class ReceivedWishesProfileFragment extends ProfileListFragment {
 		((App) getActivity().getApplication()).clearReceivedNotification();
 	}
 	
+	@Override
+	protected int getLayout() {
+		return R.layout.received_list;
+	}
+	
 }
