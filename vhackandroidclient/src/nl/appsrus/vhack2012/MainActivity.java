@@ -206,7 +206,8 @@ public class MainActivity extends SherlockFragmentActivity implements ApiListene
 	public void onSuccess(JSONObject response) {
 		try {
 			sUsers = response.getJSONArray("users");
-			mAdapter.notifyDataSetChanged();
+			mAdapter = new MainActivityAdapter(getSupportFragmentManager());		
+	        mViewPager.setAdapter(mAdapter);
 			mViewPager.invalidate();
 			mViewPager.setCurrentItem(0);
 			// Now, check the time the splash has been displaying, if less than minimum, schedule a dismiss

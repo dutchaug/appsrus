@@ -3,6 +3,7 @@ package nl.appsrus.vhack2012;
 import nl.appsrus.vhack2012.api.AbcApi;
 import nl.appsrus.vhack2012.api.ApiFactory;
 import nl.appsrus.vhack2012.data.UserProfile;
+import nl.appsrus.vhack2012.ui.RemoteImageView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -33,7 +34,7 @@ public class App extends Application {
         } else {
           Log.v(TAG, "Already registered");
         }
-		
+		RemoteImageView.initialize(getBaseContext());
 		ApiFactory.initialize(getBaseContext());
 		final AbcApi api = ApiFactory.getInstance();
 
