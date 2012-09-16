@@ -33,8 +33,34 @@ function dumpUserInfo ($user)
 			'"tagline": "'.$user["tagline"].'", '.
 			'"phoneModel": "'.$user["phoneModel"].'", '.
 			'"osVersion": "'.$user["osVersion"].'", '.
-			'"birthday": "'.$user["birthday"].'", '.
+			'"day": "'.$user["day"].'", '.
+			'"month": "'.$user["month"].'", '.
+			'"year": "'.$user["year"].'", '.
 			'"gravatarUrl": "'.md5(strtolower(trim($user["email"]))).'" }';
 }
 
+function dumpUserList($users) {
+	$result = "";
+	foreach ($users as $user) {
+		$result .= ", ".dumpUserInfo ($user);
+	}
+	if (strlen($result) > 0){
+		$result = substr($result, 1);
+	}
+	echo "{ \"users\" : [ $result ] }";
+}
+
+function getAuthenticatedUserOrDie ($link, $array) {
+	$authKey = $array["authKey"];
+	if (!isset ($authKey)) {
+		dieWithError("Missing params", "400");
+	}
+	$sql = "SELECT * FROM users WHERE authToken = '".mysql_escape_string($authKey)."'";
+	$user = queryDb($link, $sql);
+
+	if (count($user) == 0){
+		dieWithError("Error authenticating", "401");
+	}
+	return $user[0];
+}
 ?>
