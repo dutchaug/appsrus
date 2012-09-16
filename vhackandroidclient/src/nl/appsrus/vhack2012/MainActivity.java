@@ -179,20 +179,15 @@ public class MainActivity extends SherlockFragmentActivity implements ApiListene
 
         LinePageIndicator titleIndicator = (LinePageIndicator) findViewById(R.id.titles);
         titleIndicator.setViewPager(mViewPager);
+        ApiFactory.getInstance().getBirthdays(this);
+        mInitialTime = System.currentTimeMillis();
+        findViewById(R.id.layout_loading).setVisibility(View.VISIBLE);
+        findViewById(R.id.layout_main).setVisibility(View.GONE);
+        ImageView iv = (ImageView) findViewById(R.id.loading_animation);
+        iv.setImageResource(R.drawable.loading_animated);
+        AnimationDrawable ad = (AnimationDrawable) iv.getDrawable();
+        ad.start();
     }
-
-	@Override
-	protected void onStart() {
-		super.onStart();
-		ApiFactory.getInstance().getBirthdays(this);
-		mInitialTime = System.currentTimeMillis();
-		findViewById(R.id.layout_loading).setVisibility(View.VISIBLE);
-		findViewById(R.id.layout_main).setVisibility(View.GONE);
-		ImageView iv = (ImageView) findViewById(R.id.loading_animation);
-		iv.setImageResource(R.drawable.loading_animated);
-		AnimationDrawable ad = (AnimationDrawable) iv.getDrawable();
-		ad.start();
-	}
 
 	@Override
     public boolean onCreateOptionsMenu(com.actionbarsherlock.view.Menu menu) {

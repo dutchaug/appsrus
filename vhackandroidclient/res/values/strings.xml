@@ -10,7 +10,7 @@
     <string name="title_profile_my">My profile</string>
     <string name="title_profile_sent">Sent</string>
     <string name="title_profile_received">Received</string>
-    <string name="sayHappyBirthday">Send a Birthday Wish</string>
+    <string name="sayHappyBirthday">Say Appy Birthday!</string>
     <string name="action_save">Save</string>
     <string name="first_name">First name</string>
     <string name="last_name">Last name</string>
@@ -18,7 +18,7 @@
     <string name="title_birth_date">Birth date</string>
     <string name="title_device_info">Device</string>
     <string name="title_tag_line">Tagline</string>
-    <string name="alreadyCongratulated">Happy Birthday sent!</string>
+    <string name="alreadyCongratulated">Appy Birthday sent!</string>
     <string name="usesPhoneFormat">%s USES:</string>
 	<string name="saving_profile">Saving profile&#8230;</string>
 	<string name="birthday_not_set">Not set</string>
