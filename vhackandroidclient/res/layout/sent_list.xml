@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:padding="@dimen/externalMargin"
-        android:text="@string/no_received_wishes"
+        android:text="@string/no_sent_wishes"
         android:textSize="22dp" />
     
     <ListView android:layout_width="match_parent"
