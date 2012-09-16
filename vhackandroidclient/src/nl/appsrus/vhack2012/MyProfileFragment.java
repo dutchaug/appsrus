@@ -3,6 +3,10 @@ package nl.appsrus.vhack2012;
 import java.net.URI;
 import java.text.DateFormat;
 import java.util.Calendar;
+import java.util.Date;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import nl.appsrus.vhack2012.api.AbcApi;
 import nl.appsrus.vhack2012.api.ApiFactory;
@@ -95,15 +99,28 @@ public class MyProfileFragment extends SherlockFragment {
 				datePicker.show(getFragmentManager(), "datePicker");
 			}
 		});
-		
-		if (profile == null) {
-			profileEditor.setVisibility(View.GONE);
-			loadingScreen.setVisibility(View.VISIBLE);
-		} else {
-			profileEditor.setVisibility(View.VISIBLE);
-			loadingScreen.setVisibility(View.GONE);
-		}
-		
+		profileEditor.setVisibility(View.GONE);
+		loadingScreen.setVisibility(View.VISIBLE);
+		new UserProfile();
+		ApiFactory.getInstance().updateUserProfile(new UserProfile(), new AbcApi.ApiListener() {
+			@Override
+			public void onSuccess(JSONObject response) {
+				try {
+					UserProfile profile = UserProfile.parse(response);
+					setProfile(profile);
+					Log.e(TAG, "onSuccess: " + response.toString());
+				} catch (JSONException e) {
+					Log.e(TAG, "Could not parse profile", e);
+				}
+				profileEditor.setVisibility(View.VISIBLE);
+				loadingScreen.setVisibility(View.GONE);
+			}
+
+			@Override
+			public void onError(int errorCode, String errorMessage) {
+				Log.d(TAG, "onError: " + errorCode + " = " + errorMessage);
+			}
+		});		
 		return view;
 	}
 	

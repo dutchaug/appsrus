@@ -1,17 +1,10 @@
 package nl.appsrus.vhack2012;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import nl.appsrus.vhack2012.api.AbcApi;
-import nl.appsrus.vhack2012.api.ApiFactory;
-import nl.appsrus.vhack2012.data.UserProfile;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.MenuItem;
@@ -24,45 +17,18 @@ public class ProfileActivity extends SherlockFragmentActivity {
 	private ViewPager mViewPager;
 	private ProfileFragmentAdapter mAdapter;
 	
-	private MyProfileFragment myProfileFragment;
-
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         
         setContentView(R.layout.activity_profile);
-        
-        myProfileFragment = new MyProfileFragment();
-        
+                
         mAdapter = new ProfileFragmentAdapter(getSupportFragmentManager());
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mAdapter);
         
         TitlePageIndicator titleIndicator = (TitlePageIndicator) findViewById(R.id.titles);
         titleIndicator.setViewPager(mViewPager);
-        
-        UserProfile myProfile = ((App) getApplication()).getMyUserProfile();
-        if (myProfile == null) {
-        	myProfile = new UserProfile();
-        	ApiFactory.getInstance().updateUserProfile(myProfile, new AbcApi.ApiListener() {
-				
-				@Override
-				public void onSuccess(JSONObject response) {
-					try {
-						UserProfile profile = UserProfile.parse(response);
-						myProfileFragment.setProfile(profile);
-						Log.e(TAG, "onSuccess: " + response.toString());
-					} catch (JSONException e) {
-						Log.e(TAG, "Could not parse profile", e);
-					}
-				}
-				
-				@Override
-				public void onError(int errorCode, String errorMessage) {
-					Log.d(TAG, "onError: " + errorCode + " = " + errorMessage);
-				}
-			});
-        }
     }
 	
 	@Override
@@ -94,7 +60,7 @@ public class ProfileActivity extends SherlockFragmentActivity {
     	@Override
     	public Fragment getItem(int position) {
     		switch (position) {
-    		case 0: return myProfileFragment;
+    		case 0: return new MyProfileFragment();
     		case 1: return new ReceivedWishesProfileFragment();
     		case 2: return new SentWishesProfileFragment();
     		}
