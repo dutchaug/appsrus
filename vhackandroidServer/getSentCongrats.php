@@ -1,4 +1,6 @@
 <?php 
+include_once 'common.php';
+
 $link = connectDB();
 
 $user = getAuthenticatedUserOrDie($link, $_POST);

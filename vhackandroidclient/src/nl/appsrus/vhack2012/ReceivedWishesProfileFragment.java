@@ -1,20 +1,12 @@
 package nl.appsrus.vhack2012;
 
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
+import nl.appsrus.vhack2012.api.ApiFactory;
 
-import com.actionbarsherlock.app.SherlockFragment;
-
-public class ReceivedWishesProfileFragment extends SherlockFragment {
+public class ReceivedWishesProfileFragment extends ProfileListFragment {
 
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
-		TextView test = new TextView(getActivity());
-		test.setText("Sent wishes");
-		return test;
+	protected void makeApiCall() {
+		ApiFactory.getInstance().getRcvdCongrats(this);
 	}
+	
 }
