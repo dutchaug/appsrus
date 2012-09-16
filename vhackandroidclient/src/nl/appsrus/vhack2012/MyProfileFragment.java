@@ -18,6 +18,7 @@ import org.json.JSONObject;
 import android.app.LauncherActivity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -26,6 +27,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -114,6 +116,12 @@ public class MyProfileFragment extends SherlockFragment {
 		});
 		profileEditor.setVisibility(View.GONE);
 		loadingScreen.setVisibility(View.VISIBLE);
+		// Animation
+		ImageView iv = (ImageView) view.findViewById(R.id.loading_animation);
+		iv.setImageResource(R.drawable.loading_animated);
+		AnimationDrawable ad = (AnimationDrawable) iv.getDrawable();
+		ad.start();
+		
 		new UserProfile();
 		ApiFactory.getInstance().updateUserProfile(new UserProfile(), new AbcApi.ApiListener() {
 			@Override
