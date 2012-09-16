@@ -17,7 +17,7 @@ if (isset ($authKey)) {
 		WHERE fromUserId = '$userId' AND year = YEAR(CURDATE()))";
 }
 
-$sql = "SELECT * FROM users WHERE day = DAY(CURDATE()) AND month = MONTH(CURDATE()) $extra";
+$sql = "SELECT * FROM users WHERE day = DAY(CURDATE()) AND month = MONTH(CURDATE()) $extra LIMIT 5";
 $users = queryDb($link, $sql);
 
 dumpUserList($users);

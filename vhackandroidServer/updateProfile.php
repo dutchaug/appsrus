@@ -12,7 +12,7 @@ $entries = array("firstName", "lastName", "tagline", "day", "month", "year", "ph
 $values="";
 foreach ($entries as $key) {
 	$value = $_POST[$key];
-	if (isset($value) && strlen($value) > 0) {
+	if (isset($value) && strlen($value) > 0 && $value != "0") {
 		$values .= ", $key='".mysql_escape_string($_POST[$key])."'";
 	}
 }

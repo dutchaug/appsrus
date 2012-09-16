@@ -3,6 +3,7 @@ package nl.appsrus.vhack2012;
 import nl.appsrus.vhack2012.api.ApiFactory;
 import android.content.Context;
 import android.content.Intent;
+import android.widget.Toast;
 
 import com.google.android.gcm.GCMBaseIntentService;
 
@@ -18,7 +19,7 @@ public class GCMIntentService extends GCMBaseIntentService {
 
 	@Override
 	protected void onMessage(Context context, Intent intent) {
-		// TODO Auto-generated method stub
+		Toast.makeText(this, "Push received!!", Toast.LENGTH_LONG).show();
 	}
 
 	@Override

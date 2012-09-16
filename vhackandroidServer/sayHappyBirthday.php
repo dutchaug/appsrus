@@ -1,5 +1,6 @@
 <?php 
 include 'common.php';
+include 'gcm.php';
 
 $link = connectDB();
 
@@ -16,6 +17,7 @@ $target = queryDb($link, $sql);
 if (count($target) == 0){
 	dieWithError("Today is not the birthday of this person");
 }
+$gcmToken = $target[0]["c2dmToken"];
 // Only once per year
 $sql = "SELECT * FROM congrats WHERE year = YEAR(CURDATE()) AND fromUserId = '".$user["userId"]."' AND toUserId = '$targetId'";
 $target = queryDb($link, $sql);
@@ -26,47 +28,7 @@ if (count($target) > 0){
 $sql = "INSERT INTO congrats (fromUSerId, toUserId, year) VALUES ('".$user["userId"]."', '$targetId', YEAR(CURDATE()))";
 queryDb($link, $sql);
 
+sendGcm($gcmToken);
+
 echo "{}";
-// // Send a push notification
-// // Replace with real BROWSER API key from Google APIs
-// $apiKey = "6462992600";
-// $theRealKey = "AIzaSyDaRlIfHKSt9Ujqzg3Bnw_5TsTIvPAeeyk";
-// // Replace with real client registration IDs
-// $registrationIDs = array( "123", "456" );
-
-// // Message to be sent
-// $message = "x";
-
-// // Set POST variables
-// $url = 'https://android.googleapis.com/gcm/send';
-
-// $fields = array(
-// 		'registration_ids'  => $registrationIDs,
-// 		'data'              => array( "message" => $message ),
-// );
-
-// $headers = array(
-// 		'Authorization: key=' . $apiKey,
-// 		'Content-Type: application/json'
-// );
-
-// // Open connection
-// $ch = curl_init();
-
-// // Set the url, number of POST vars, POST data
-// curl_setopt( $ch, CURLOPT_URL, $url );
-
-// curl_setopt( $ch, CURLOPT_POST, true );
-// curl_setopt( $ch, CURLOPT_HTTPHEADER, $headers);
-// curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
-
-// curl_setopt( $ch, CURLOPT_POSTFIELDS, json_encode( $fields ) );
-
-// // Execute post
-// $result = curl_exec($ch);
-
-// // Close connection
-// curl_close($ch);
-
-// echo $result;
 ?>
