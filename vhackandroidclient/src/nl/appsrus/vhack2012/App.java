@@ -7,6 +7,8 @@ import nl.appsrus.vhack2012.data.UserProfile;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.google.android.gcm.GCMRegistrar;
+
 import android.accounts.Account;
 import android.accounts.AccountManager;
 import android.app.Application;
@@ -22,6 +24,15 @@ public class App extends Application {
 	public void onCreate() {
 		super.onCreate();
 		Log.d(TAG, "onCreate");
+		
+		GCMRegistrar.checkDevice(this);
+        GCMRegistrar.checkManifest(this);
+        final String regId = GCMRegistrar.getRegistrationId(this);
+        if (regId.equals("")) {
+          GCMRegistrar.register(this, "6462992600");
+        } else {
+          Log.v(TAG, "Already registered");
+        }
 		
 		ApiFactory.initialize(getBaseContext());
 		final AbcApi api = ApiFactory.getInstance();

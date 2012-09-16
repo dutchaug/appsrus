@@ -20,6 +20,8 @@ public interface AbcApi {
 	
 	public void updateUserProfile (UserProfile userProfile, ApiListener listener);
 
+	public void updateGCMId(String regId, ApiListener listener);
+	
 	public String getAuthToken();
 	
 	public void setAuthToken(String authToken);

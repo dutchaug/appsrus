@@ -5,6 +5,8 @@ import nl.appsrus.vhack2012.data.UserProfile;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.google.android.gcm.GCMRegistrar;
+
 import android.accounts.Account;
 import android.accounts.AccountManager;
 import android.content.Context;
@@ -69,13 +71,20 @@ public class AbcApiImpl implements AbcApi {
 		new ApiRequest(listener).execute("updateProfile.php",
 				"firstName", userProfile.firstName,
 				"lastName", userProfile.lastName,
-				"c2dm", userProfile.gcmToken,
+				"c2dmToken", GCMRegistrar.getRegistrationId(mContext),
 				"tagline", userProfile.tagLine,
 				"day", Integer.toString(userProfile.day),
 				"month", Integer.toString(userProfile.month),
 				"year", Integer.toString(userProfile.year),
-				"deviceName", Build.MODEL,
-				"osVesion", "Android " + Build.VERSION.RELEASE
+				"phoneModel", Build.MODEL,
+				"osVersion", "Android " + Build.VERSION.RELEASE
+				);
+	}
+	
+	@Override
+	public void updateGCMId(String regId, ApiListener listener) {
+		new ApiRequest(listener).execute("updateProfile.php",
+				"c2dm", regId
 				);
 	}
 	

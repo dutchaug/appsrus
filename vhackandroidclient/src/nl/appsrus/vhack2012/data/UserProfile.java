@@ -23,9 +23,15 @@ public class UserProfile {
 	
 	public static UserProfile parse(JSONObject json) throws JSONException {
 		UserProfile userProfile = new UserProfile();
+		userProfile.userId = json.getInt("userId");
 		userProfile.firstName = json.getString("firstName");
 		userProfile.lastName = json.getString("lastName");
-		
+		userProfile.tagLine = json.getString("tagline");
+		userProfile.day = json.getInt("day");
+		userProfile.month = json.getInt("month");
+		userProfile.year = json.getInt("year");
+		userProfile.phoneName = json.getString("phoneModel");
+		userProfile.osVersion = json.getString("osVersion");
 		return userProfile;
 	}
 }
