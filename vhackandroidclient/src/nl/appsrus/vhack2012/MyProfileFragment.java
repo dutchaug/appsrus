@@ -9,11 +9,11 @@ import org.json.JSONObject;
 
 import nl.appsrus.vhack2012.api.AbcApi;
 import nl.appsrus.vhack2012.api.ApiFactory;
-import nl.appsrus.vhack2012.api.AbcApi.ApiListener;
 import nl.appsrus.vhack2012.data.UserProfile;
-import android.app.Dialog;
+
+import org.json.JSONObject;
+
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -31,6 +31,9 @@ public class MyProfileFragment extends SherlockFragment {
 	private static final String TAG = MyProfileFragment.class.getSimpleName();
 	
 	private UserProfile profile;
+	
+	private View profileEditor;
+	private View loadingScreen;
 	
 	private EditText firstName;
 	private EditText lastName;
@@ -50,6 +53,10 @@ public class MyProfileFragment extends SherlockFragment {
 			Bundle savedInstanceState) {
 		
 		View view = inflater.inflate(R.layout.fragment_profile_edit, null);
+		
+		profileEditor = view.findViewById(R.id.profile_editor);
+		loadingScreen = view.findViewById(R.id.layout_loading);
+		
 		firstName = (EditText) view.findViewById(R.id.first_name);
 		lastName = (EditText) view.findViewById(R.id.last_name);
 		
@@ -87,6 +94,8 @@ public class MyProfileFragment extends SherlockFragment {
 				datePicker.show(getFragmentManager(), "datePicker");
 			}
 		});
+		profileEditor.setVisibility(View.GONE);
+		loadingScreen.setVisibility(View.VISIBLE);
 		new UserProfile();
 		ApiFactory.getInstance().updateUserProfile(new UserProfile(), new AbcApi.ApiListener() {
 			@Override
@@ -98,14 +107,15 @@ public class MyProfileFragment extends SherlockFragment {
 				} catch (JSONException e) {
 					Log.e(TAG, "Could not parse profile", e);
 				}
+				profileEditor.setVisibility(View.VISIBLE);
+				loadingScreen.setVisibility(View.GONE);
 			}
 
 			@Override
 			public void onError(int errorCode, String errorMessage) {
 				Log.d(TAG, "onError: " + errorCode + " = " + errorMessage);
 			}
-		});
-        
+		});		
 		return view;
 	}
 	
@@ -127,6 +137,9 @@ public class MyProfileFragment extends SherlockFragment {
 			
 			birthDay.setText(DateFormat.getDateInstance(DateFormat.MEDIUM).format(calendar.getTime()));
 		}
+		
+		profileEditor.setVisibility(View.VISIBLE);
+		loadingScreen.setVisibility(View.GONE);
 	}
 	
 	private void saveProfile() {
