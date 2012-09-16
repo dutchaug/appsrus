@@ -2,17 +2,14 @@ package nl.appsrus.vhack2012;
 
 import java.text.DateFormat;
 import java.util.Calendar;
-import java.util.Date;
-
-import org.json.JSONObject;
 
 import nl.appsrus.vhack2012.api.AbcApi;
 import nl.appsrus.vhack2012.api.ApiFactory;
-import nl.appsrus.vhack2012.api.AbcApi.ApiListener;
 import nl.appsrus.vhack2012.data.UserProfile;
-import android.app.Dialog;
+
+import org.json.JSONObject;
+
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -30,6 +27,9 @@ public class MyProfileFragment extends SherlockFragment {
 	private static final String TAG = MyProfileFragment.class.getSimpleName();
 	
 	private UserProfile profile;
+	
+	private View profileEditor;
+	private View loadingScreen;
 	
 	private EditText firstName;
 	private EditText lastName;
@@ -49,6 +49,10 @@ public class MyProfileFragment extends SherlockFragment {
 			Bundle savedInstanceState) {
 		
 		View view = inflater.inflate(R.layout.fragment_profile_edit, null);
+		
+		profileEditor = view.findViewById(R.id.profile_editor);
+		loadingScreen = view.findViewById(R.id.layout_loading);
+		
 		firstName = (EditText) view.findViewById(R.id.first_name);
 		lastName = (EditText) view.findViewById(R.id.last_name);
 		
@@ -87,6 +91,14 @@ public class MyProfileFragment extends SherlockFragment {
 			}
 		});
 		
+		if (profile == null) {
+			profileEditor.setVisibility(View.GONE);
+			loadingScreen.setVisibility(View.VISIBLE);
+		} else {
+			profileEditor.setVisibility(View.VISIBLE);
+			loadingScreen.setVisibility(View.GONE);
+		}
+		
 		return view;
 	}
 	
@@ -108,6 +120,9 @@ public class MyProfileFragment extends SherlockFragment {
 			
 			birthDay.setText(DateFormat.getDateInstance(DateFormat.MEDIUM).format(calendar.getTime()));
 		}
+		
+		profileEditor.setVisibility(View.VISIBLE);
+		loadingScreen.setVisibility(View.GONE);
 	}
 	
 	private void saveProfile() {
