@@ -59,12 +59,4 @@ public class App extends Application {
 			});
 		}
 	}
-	
-	public UserProfile getMyUserProfile() {
-		return myUserProfile;
-	}
-	
-	public void setMyUserProfile(UserProfile myUserProfile) {
-		this.myUserProfile = myUserProfile;
-	}
 }

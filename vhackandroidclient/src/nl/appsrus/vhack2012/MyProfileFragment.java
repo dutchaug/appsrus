@@ -4,6 +4,7 @@ import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import nl.appsrus.vhack2012.api.AbcApi;
@@ -86,7 +87,25 @@ public class MyProfileFragment extends SherlockFragment {
 				datePicker.show(getFragmentManager(), "datePicker");
 			}
 		});
-		
+		new UserProfile();
+		ApiFactory.getInstance().updateUserProfile(new UserProfile(), new AbcApi.ApiListener() {
+			@Override
+			public void onSuccess(JSONObject response) {
+				try {
+					UserProfile profile = UserProfile.parse(response);
+					setProfile(profile);
+					Log.e(TAG, "onSuccess: " + response.toString());
+				} catch (JSONException e) {
+					Log.e(TAG, "Could not parse profile", e);
+				}
+			}
+
+			@Override
+			public void onError(int errorCode, String errorMessage) {
+				Log.d(TAG, "onError: " + errorCode + " = " + errorMessage);
+			}
+		});
+        
 		return view;
 	}
 	
