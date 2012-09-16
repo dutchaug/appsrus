@@ -1,11 +1,11 @@
 <resources>
 
-    <string name="app_name">ABC</string>
+    <string name="app_name">Appy Birthday</string>
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
     <string name="menu_profile">Profile</string>
     <string name="menu_delete">Delete</string>
-    <string name="title_activity_main">Android Birthday Calendar</string>
+    <string name="title_activity_main">Appy Birthday</string>
     <string name="title_activity_profile">Profile</string>
     <string name="title_profile_my">My profile</string>
     <string name="title_profile_sent">Sent</string>
