@@ -11,7 +11,7 @@
 		android:layout_height="wrap_content"
 		android:layout_width="fill_parent"
 		app:footerColor="#A4C639"
-		android:background="#666666"
+		android:background="#80000000"
 		/>
 
     <android.support.v4.view.ViewPager
