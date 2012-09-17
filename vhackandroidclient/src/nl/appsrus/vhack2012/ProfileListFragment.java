@@ -73,7 +73,7 @@ public abstract class ProfileListFragment extends SherlockFragment implements Ap
 			getView().findViewById(R.id.list).setVisibility(View.VISIBLE);
 			getView().findViewById(R.id.layout_loading).setVisibility(View.GONE);
 			
-		} catch (JSONException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
