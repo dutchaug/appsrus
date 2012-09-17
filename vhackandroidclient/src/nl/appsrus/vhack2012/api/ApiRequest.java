@@ -73,8 +73,8 @@ public class ApiRequest extends AsyncTask<String, Void, ApiResponse> {
 		}
 	}
 
-	private static final int TIMEOUT_SOCKET = 5000;
-	private static final int TIMEOUT_CONNECTION = 3000;
+	private static final int TIMEOUT_SOCKET = 10000;
+	private static final int TIMEOUT_CONNECTION = 10000;
 
 	private ApiListener mListener;
 
