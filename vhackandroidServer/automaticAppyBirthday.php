@@ -21,6 +21,6 @@ foreach ($users as $user) {
 	$sql = "INSERT INTO congrats (fromUSerId, toUserId, year) VALUES ('1', '$targetId', YEAR(CURDATE()))";
 	queryDb($link, $sql);	
 	sendGcm($gcmToken);
-	echo date().": Saying Appy Birthday to ".$user["email"]."<br>\n";
+	echo date('Y-m-d H:i:s').": Saying Appy Birthday to ".$user["email"]."<br>\n";
 }
 ?>
